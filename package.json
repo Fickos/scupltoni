@@ -32,9 +32,11 @@
     "express-useragent": "^1.0.15",
     "formidable": "^3.5.1",
     "http": "^0.0.1-security",
+    "log4js": "^6.9.1",
     "mongodb": "^6.1.0",
     "mongoose": "^7.6.1",
     "nodemon": "^3.0.1",
+    "path": "^0.12.7",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

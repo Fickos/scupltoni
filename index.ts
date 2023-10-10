@@ -6,6 +6,7 @@ import formatRequest from './middleware/request';
 import formatResponse from './middleware/response';
 import routes from './routes';
 import { connectDatabase } from './entityFactory';
+import { logger } from './utils/logger';
 
 const app: Application = express();
 
@@ -22,7 +23,9 @@ const server = http.createServer(app);
 
 const startServer = async () => {
     await connectDatabase(`${config.database.host}:${config.database.port}/${config.database.name}`);
+    logger.info('Connected to database');
     server.listen(config.server.port);
+    logger.info(`Server started on port: ${config.server.port}`);
 }
 
 startServer();
