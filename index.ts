@@ -16,7 +16,7 @@ app.use('/', formatRequest, routes, formatResponse);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     const statusCode = res?.statusCode || res?.OutgoingParams?.status || 500;
-    res.status(statusCode).json({'message': err.message});
+    res.status(statusCode).json({ 'message': err.message });
 });
 
 const server = http.createServer(app);

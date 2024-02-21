@@ -4,7 +4,7 @@
   "description": "The server side for SCULPTONI application",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --require ts-node/register ./tests/**/*.ts",
     "start": "node dist/index.js",
     "dev": "nodemon --files index.ts"
   },
@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/Fickos/scupltoni#readme",
   "dependencies": {
+    "assert": "^2.1.0",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -32,7 +33,9 @@
     "express-useragent": "^1.0.15",
     "formidable": "^3.5.1",
     "http": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
     "log4js": "^6.9.1",
+    "mocha": "^10.2.0",
     "mongodb": "^6.1.0",
     "mongoose": "^7.6.1",
     "nodemon": "^3.0.1",
@@ -43,6 +46,8 @@
     "@types/cors": "^2.8.14",
     "@types/express": "^4.17.18",
     "@types/formidable": "^3.4.3",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/mocha": "^10.0.2",
     "@types/uuid": "^9.0.5",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.2.2"

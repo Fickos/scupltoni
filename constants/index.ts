@@ -12,7 +12,8 @@ const constants = Object.freeze({
     },
     USER_CONSTANTS: {
         LOGIN_SUCCESS: "login_success",
-        BAD_CREDENTIALS: "bad_credentials"
+        BAD_CREDENTIALS: "bad_credentials",
+        BAD_USERNAME: "bad_username",
     }
 });
 

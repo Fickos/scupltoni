@@ -16,7 +16,7 @@ export default {
         tokenSecret: process.env.SERVER_TOKEN_SECRET ?? 'secret',
     },
     corsSettings: {
-        origin: process.env.SERVER_ORIGIN,
+        origin: process.env.SERVER_ORIGIN ?? '*',
         exposedHeaders: process.env.SERVER_EXPOSE_HEADERS?.split(',')
     },
     database: {

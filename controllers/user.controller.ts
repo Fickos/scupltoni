@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from "express";
+import jsonwebtoken from "jsonwebtoken";
 import constants from "../constants";
 import sendResponse from '../middleware/response';
 import { UserDB } from "../entityFactory/models/User";
+import config from "../config";
 
 export const list = async(req: Request, res: Response, next: NextFunction) => {
     try {
@@ -21,12 +23,29 @@ export const list = async(req: Request, res: Response, next: NextFunction) => {
 export const login = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { username, password } = req.IncomingParams;
-        if (username == 'a' && password == 'b') {
+
+        const user = await UserDB.findOne({ $or: [{ username: username }, { email: username }] });
+        if (!user) {
+            res.OutgoingParams = {
+                status: 400,
+                key: constants.USER_CONSTANTS.BAD_USERNAME,
+                message: 'No user with given username'
+            }
+            return sendResponse(req, res);
+        }
+        
+        if (user.password === password) {
             res.OutgoingParams = {
                 status: 200,
                 key: constants.USER_CONSTANTS.LOGIN_SUCCESS,
                 message: 'Login successful',
-                result: { token: "fanifqnfqifnqfiqnwfiqnwfqw" }
+                result: { 
+                    token: jsonwebtoken.sign(
+                        { userId: user.username }, 
+                        config.server.tokenSecret, 
+                        { expiresIn: '1h' }
+                    )
+                }
             }
             return sendResponse(req, res);
         }
