@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha --require ts-node/register ./tests/**/*.ts",
     "start": "node dist/index.js",
-    "dev": "nodemon --files index.ts"
+    "dev": "nodemon --files index.ts",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
