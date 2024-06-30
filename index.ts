@@ -22,7 +22,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 const server = http.createServer(app);
 
 const startServer = async () => {
-    await connectDatabase(`${config.database.host}:${config.database.port}/${config.database.name}`);
+    await connectDatabase(`${config.database.host}`);
     logger.info('Connected to database');
     server.listen(config.server.port);
     logger.info(`Server started on port: ${config.server.port}`);

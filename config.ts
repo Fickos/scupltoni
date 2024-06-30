@@ -21,7 +21,7 @@ export default {
     },
     database: {
         name: process.env.DATABASE_NAME ?? 'sculptoni',
-        host: process.env.DATABASE_HOST ?? 'localhost',
+        host: process.env.DATABASE_HOST ?? 'mongodb://localhost:27017/sculptoni',
         port: process.env.DATABASE_PORT ?? '27017',
         username: process.env.DATABASE_USERNAME ?? 'root',
         password: process.env.DATABASE_PASSWORD ?? 'root',
